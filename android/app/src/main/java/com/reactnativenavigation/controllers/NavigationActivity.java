@@ -490,4 +490,10 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
     public static void setStartAppPromise(Promise promise) {
         NavigationActivity.startAppPromise = promise;
     }
+
+    void resetBottomTabs(List<ScreenParams> tabParams) {
+        if (layout instanceof BottomTabsLayout) {
+            ((BottomTabsLayout) layout).resetBottomTabs(tabParams);
+        }
+    }
 }

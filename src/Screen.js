@@ -105,6 +105,10 @@ class Navigator {
     return platformSpecific.navigatorToggleTabs(this, params);
   }
 
+  resetBottomTabs(params = {}) {
+    return platformSpecific.resetBottomTabs(this, params);
+  }
+
   toggleNavBar(params = {}) {
     return platformSpecific.navigatorToggleNavBar(this, params);
   }

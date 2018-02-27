@@ -281,4 +281,9 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
     public void getLaunchArgs(Promise promise) {
         NavigationCommandsHandler.getLaunchArgs(promise);
     }
+
+    @ReactMethod
+    public void resetBottomTabs(final ReadableMap params) {
+        NavigationCommandsHandler.resetBottomTabs(BundleConverter.toBundle(params));
+    }
 }

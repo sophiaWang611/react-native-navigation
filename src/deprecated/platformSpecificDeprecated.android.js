@@ -500,6 +500,32 @@ function navigatorToggleTabs(navigator, params) {
   newPlatformSpecific.toggleBottomTabsVisible(visibility, animated);
 }
 
+function resetBottomTabs(navigator, params) {
+    if (!params.tabs) {
+        console.error('resetBottomTabs(params): params.tabs is required');
+        return;
+    }
+
+    const newTabs = [];
+
+    params.tabs = _.cloneDeep(params.tabs);
+
+    params.tabs.forEach(function(tab, idx) {
+        if (tab.components) {
+            const components = tab.components;
+            const screen = createBottomTabScreen(components[0], idx, params)
+            const {label, icon} = components[0];
+            components.shift();
+            screen.screens = components.map(c => createBottomTabScreen({...c, icon, label}, idx, params));
+            newTabs.push(screen);
+        } else {
+            newTabs.push(createBottomTabScreen(tab, idx, params));
+        }
+    });
+    params.tabs = newTabs;
+    return newPlatformSpecific.resetBottomTabs(params);
+}
+
 function showModal(params) {
   addNavigatorParams(params);
   addNavigatorButtons(params);
@@ -843,5 +869,6 @@ export default {
   isAppLaunched,
   isRootLaunched,
   getCurrentlyVisibleScreenId,
-  getLaunchArgs
+  getLaunchArgs,
+  resetBottomTabs
 };

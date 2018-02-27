@@ -613,4 +613,14 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
             sideMenu.openDrawer(Side.Left);
         }
     }
+
+    @Override
+    public void resetBottomTabs(List<ScreenParams> tabParams) {
+        params.tabParams = tabParams;
+        getScreenStackParent().removeView(bottomTabs);
+        createBottomTabs();
+        addBottomTabs();
+        setBottomTabsStyleFromCurrentScreen();
+        setInitialTabIndex();
+    }
 }

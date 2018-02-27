@@ -551,4 +551,20 @@ public class NavigationCommandsHandler {
         Bundle bundle = LaunchArgs.instance.get();
         promise.resolve(Arguments.fromBundle(bundle));
     }
+
+    public static void resetBottomTabs(final Bundle params) {
+        final NavigationActivity currentActivity = NavigationActivity.currentActivity;
+        if (currentActivity == null) {
+            return;
+        }
+
+        final ActivityParams activityParams = ActivityParamsParser.parse(params);
+
+        NavigationApplication.instance.runOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                currentActivity.resetBottomTabs(activityParams.tabParams);
+            }
+        });
+    }
 }

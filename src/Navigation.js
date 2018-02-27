@@ -186,6 +186,10 @@ async function getLaunchArgs() {
   return await platformSpecific.getLaunchArgs();
 }
 
+async function resetBottomTabs(param) {
+    return await platformSpecific.resetBottomTabs(param);
+}
+
 export default {
   getRegisteredScreen,
   getCurrentlyVisibleScreenId,
@@ -205,5 +209,6 @@ export default {
   handleDeepLink: handleDeepLink,
   isAppLaunched: isAppLaunched,
   isRootLaunched: isRootLaunched,
-  getLaunchArgs
+  getLaunchArgs,
+  resetBottomTabs
 };

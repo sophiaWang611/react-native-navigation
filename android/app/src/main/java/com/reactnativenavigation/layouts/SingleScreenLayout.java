@@ -348,4 +348,9 @@ public class SingleScreenLayout extends BaseLayout {
             sideMenu.openDrawer(Side.Left);
         }
     }
+
+    @Override
+    public void resetBottomTabs(List<ScreenParams> tabParams) {
+
+    }
 }

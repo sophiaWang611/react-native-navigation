@@ -202,6 +202,10 @@ async function getLaunchArgs() {
   return await NativeReactModule.getLaunchArgs();
 }
 
+async function resetBottomTabs(params) {
+    return await NativeReactModule.resetBottomTabs(params);
+}
+
 module.exports = {
   startApp,
   push,
@@ -239,5 +243,6 @@ module.exports = {
   isAppLaunched,
   isRootLaunched,
   getCurrentlyVisibleScreenId,
-  getLaunchArgs
+  getLaunchArgs,
+  resetBottomTabs
 };
